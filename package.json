@@ -1,0 +1,19 @@
+{
+  "name": "safe-youtube",
+  "version": "1.0.0",
+  "description": "Enter a youtube id and present a searchable page the prevents links to external sites and prevent recommended videos",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdingus/safe-youtube.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdingus/safe-youtube/issues"
+  },
+  "homepage": "https://github.com/jdingus/safe-youtube#readme"
+}
