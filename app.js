@@ -2,21 +2,21 @@ document.getElementById("channel-form").addEventListener("submit", function (eve
     event.preventDefault();
     const channelId = document.getElementById("channel-input").value;
     const searchQuery = document.getElementById("search-input").value;
+    const maxResults = document.getElementById("max-results").value;
     if (channelId.trim() !== "") {
-        getChannelVideos(channelId, searchQuery);
+        getChannelVideos(channelId, searchQuery, maxResults);
     } else {
         showError("Please enter a valid YouTube channel ID.");
     }
 });
 
-function getChannelVideos(channelId, searchQuery) {
+function getChannelVideos(channelId, searchQuery, maxResults) {
     const apiKey = "AIzaSyB6O9dWqWBPXHXFtJJQGqL-LgOThMz81JM"; // Replace with your YouTube API key
     if (apiKey === "YOUR_API_KEY" || apiKey.trim() === "") {
         showError("Please replace 'YOUR_API_KEY' in the app.js file with a valid YouTube API key.");
         return;
     }
 
-    const maxResults = 10;
     const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`;
 
     fetch(url)
@@ -43,8 +43,12 @@ function displayVideos(videos) {
 
     videos.forEach(video => {
         const videoId = video.id.videoId;
+
         const videoWrapper = document.createElement("div");
-        videoWrapper.classList.add("video-wrapper");
+        videoWrapper.classList.add("video-wrapper", "col-md-6", "mb-4");
+
+        const videoResponsive = document.createElement("div");
+        videoResponsive.classList.add("video-responsive");
 
         const iframe = document.createElement("iframe");
         iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0&modestbranding=1&showinfo=0`;
@@ -53,10 +57,12 @@ function displayVideos(videos) {
         // Add sandbox attribute to the iframe to restrict its capabilities
         iframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-presentation");
 
-        videoWrapper.appendChild(iframe);
+        videoResponsive.appendChild(iframe);
+        videoWrapper.appendChild(videoResponsive);
         videoContainer.appendChild(videoWrapper);
     });
 }
+
 
 
 

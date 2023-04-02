@@ -1,26 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Safe YouTube</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Safe YouTube</h1>
-      UCawsI_mlmPA7Cfld-qZhBQA
-    </header>
-    <main>
-        <form id="channel-form">
-            <label for="channel-input">Enter YouTube Channel ID:</label>
-            <input type="text" id="channel-input" required>
-            <label for="search-input">Search videos:</label>
-            <input type="text" id="search-input">
-            <button type="submit">Submit</button>
-        </form>
-      <div id="video-container"></div>
-    </main>
-    <script src="app.js"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Safe YouTube</title>
+        <!-- Add Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <!-- Add Bootstrap JavaScript and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="app.js" defer></script>
+    </head>
+    
+    <body>
+        <div class="container">
+            <h1 class="text-center my-4">Safe YouTube</h1>
+            <form id="channel-form" class="mb-5">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="channel-input">Select a YouTube Channel:</label>
+                        <select id="channel-input" class="form-control" required>
+                            <option value="UCawsI_mlmPA7Cfld-qZhBQA" selected>GriffPatch</option>
+                            <option value="CHANNEL_ID_2">Channel 2</option>
+                            <option value="CHANNEL_ID_3">Channel 3</option>
+                            <!-- Add more channel IDs as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="search-input">Search videos:</label>
+                        <input type="text" id="search-input" class="form-control">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="max-results">Number of videos:</label>
+                        <select id="max-results" class="form-control">
+                            <option value="10" selected>10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                    </div>
+                </div>
+            </form>
+            <div id="error-container" class="alert alert-danger d-none" role="alert"></div>
+            <div id="video-container" class="row"></div>
+        </div>
+    </body>
+    
+    
 </html>
