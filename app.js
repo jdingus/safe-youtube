@@ -12,7 +12,7 @@ document.getElementById("channel-form").addEventListener("submit", function (eve
 
 function getChannelVideos(channelId, searchQuery, maxResults) {
     // const apiKey = YOUTUBE_API_KEY;
-    const apiKey = "UCawsI_mlmPA7Cfld-qZhBQA"; // Replace with your YouTube API key
+    const apiKey = "AIzaSyB6O9dWqWBPXHXFtJJQGqL-LgOThMz81JM"; // Replace with your YouTube API key
     if (apiKey === "YOUR_API_KEY" || apiKey.trim() === "") {
         showError("Please replace 'YOUR_API_KEY' in the app.js file with a valid YouTube API key.");
         return;
