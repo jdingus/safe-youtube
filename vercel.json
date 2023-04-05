@@ -1,0 +1,8 @@
+{
+    "functions": {
+      "api/youtube-api.js": {
+        "runtime": "nodejs16.x"
+      }
+    }
+  }
+  
