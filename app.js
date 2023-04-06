@@ -12,17 +12,8 @@ document.getElementById("channel-form").addEventListener("submit", function (eve
 });
 
 function getChannelVideos(channelId, searchQuery, maxResults) {
-    // const apiKey = YOUTUBE_API_KEY;
-    // const apiKey = "AIzaSyB6O9dWqWBPXHXFtJJQGqL-LgOThMz81JM"; // Replace with your YouTube API key
-    // if (apiKey === "YOUR_API_KEY" || apiKey.trim() === "") {
-    //     showError("Please replace 'YOUR_API_KEY' in the app.js file with a valid YouTube API key.");
-    //     return;
-    // }
-    // https://safe-youtube-gules.vercel.app/api/youtube-api?channelId=UCawsI_mlmPA7Cfld-qZhBQA&maxResults=10
-
-    const url = `https://safe-youtube-gules.vercel.app/api/youtube-api?channelId=${channelId}&maxResults=${maxResults}${searchQuery ? `&searchQuery=${encodeURIComponent(searchQuery)}` : ''}`;
-
-    // const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`;
+    const baseUrl = "https://safe-youtube-gules.vercel.app";
+    const url = `${baseUrl}/api/youtube-api?channelId=${channelId}&maxResults=${maxResults}${searchQuery ? `&searchQuery=${encodeURIComponent(searchQuery)}` : ''}`;
 
     fetch(url)
         .then(response => {
@@ -40,6 +31,7 @@ function getChannelVideos(channelId, searchQuery, maxResults) {
         })
         .catch(error => showError(error.message));
 }
+
 
 
 function displayVideos(videos) {
