@@ -1,0 +1,23 @@
+{
+  "name": "youtube-safe",
+  "version": "1.0.0",
+  "description": "App which allows kids to browse youtube channels but not be allowed to click on content that will navigate them away from the page....",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdingus/safe-youtube.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdingus/safe-youtube/issues"
+  },
+  "homepage": "https://github.com/jdingus/safe-youtube#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.1"
+  }
+}
