@@ -2,7 +2,11 @@
     "functions": {
       "api/youtube-api.js": {
         "runtime": "nodejs16.x"
+      },
+      "api/**/*.php": {
+        "runtime": "vercel-php@0.1.0"
       }
+      
     }
   }
   
