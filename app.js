@@ -18,8 +18,9 @@ function getChannelVideos(channelId, searchQuery, maxResults) {
     //     showError("Please replace 'YOUR_API_KEY' in the app.js file with a valid YouTube API key.");
     //     return;
     // }
+    // https://safe-youtube-gules.vercel.app/api/youtube-api?channelId=UCawsI_mlmPA7Cfld-qZhBQA&maxResults=10
 
-    const url = `/api/youtube-api?channelId=${channelId}&maxResults=${maxResults}${searchQuery ? `&searchQuery=${encodeURIComponent(searchQuery)}` : ''}`;
+    const url = `https://safe-youtube-gules.vercel.app/api/youtube-api?channelId=${channelId}&maxResults=${maxResults}${searchQuery ? `&searchQuery=${encodeURIComponent(searchQuery)}` : ''}`;
 
     // const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`;
 
