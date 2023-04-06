@@ -1,12 +1,14 @@
 {
-    "functions": {
-      "api/youtube-api.js": {
-        "runtime": "nodejs16.x"
-      },
-      "api/**/*.php": {
-        "runtime": "vercel-php@0.1.0"
-      }
-      
+  "builds": [
+    {
+      "src": "api/youtube-api.js",
+      "use": "@vercel/node"
     }
-  }
-  
+  ],
+  "routes": [
+    {
+      "src": "/api/youtube-api",
+      "dest": "/api/youtube-api.js"
+    }
+  ]
+}
