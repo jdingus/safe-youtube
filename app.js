@@ -70,13 +70,18 @@ function getChannelVideos(channelId, searchQuery, maxResults) {
         .catch(error => showError(error.message));
 }
 
-
-
 function displayVideos(videos) {
     const videoContainer = document.getElementById("video-container");
     videoContainer.innerHTML = ""; // Clear any previous videos
 
-    videos.forEach(video => {
+    if (Array.isArray(videos)) {
+        videos.forEach(video => {
+            // existing code...
+        });
+    } else {
+        showError("No videos found for the provided channel ID and search criteria.");
+    }
+}
         const videoId = video.id.videoId;
 
         const videoWrapper = document.createElement("div");
