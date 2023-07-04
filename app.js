@@ -61,6 +61,7 @@ function getChannelVideos(channelId, searchQuery, maxResults) {
             return response.json();
         })
     .then(data => {
+        console.log(data); // Add this line
         if (data.pageInfo && data.pageInfo.totalResults === 0) {
             showError("No videos found for the provided channel ID and search criteria.");
         } else {
