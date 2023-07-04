@@ -20,6 +20,6 @@
     }
   ],
   "env": {
-    "GITHUB_TOKEN": "@github_token"
+    "YOUTUBE_API_KEY": "@youtube_api_key"
   }
 }
