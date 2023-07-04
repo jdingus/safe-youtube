@@ -76,31 +76,28 @@ function displayVideos(videos) {
 
     if (Array.isArray(videos)) {
         videos.forEach(video => {
-            // existing code...
+            const videoId = video.id.videoId;
+
+            const videoWrapper = document.createElement("div");
+            videoWrapper.classList.add("video-wrapper", "col-md-6", "mb-4");
+
+            const videoResponsive = document.createElement("div");
+            videoResponsive.classList.add("video-responsive");
+
+            const iframe = document.createElement("iframe");
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0&modestbranding=1&showinfo=0`;
+            iframe.setAttribute("allowfullscreen", "");
+
+            // Add sandbox attribute to the iframe to restrict its capabilities
+            iframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-presentation");
+
+            videoResponsive.appendChild(iframe);
+            videoWrapper.appendChild(videoResponsive);
+            videoContainer.appendChild(videoWrapper);
         });
     } else {
         showError("No videos found for the provided channel ID and search criteria.");
     }
-}
-        const videoId = video.id.videoId;
-
-        const videoWrapper = document.createElement("div");
-        videoWrapper.classList.add("video-wrapper", "col-md-6", "mb-4");
-
-        const videoResponsive = document.createElement("div");
-        videoResponsive.classList.add("video-responsive");
-
-        const iframe = document.createElement("iframe");
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0&modestbranding=1&showinfo=0`;
-        iframe.setAttribute("allowfullscreen", "");
-
-        // Add sandbox attribute to the iframe to restrict its capabilities
-        iframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-presentation");
-
-        videoResponsive.appendChild(iframe);
-        videoWrapper.appendChild(videoResponsive);
-        videoContainer.appendChild(videoWrapper);
-    });
 }
 
 
