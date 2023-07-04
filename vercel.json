@@ -20,6 +20,6 @@
     }
   ],
   "env": {
-    "YOUTUBE_API_KEY": "Please set this in your Vercel dashboard"
+    "YOUTUBE_API_KEY": "your_actual_youtube_api_key"
   }
 }
