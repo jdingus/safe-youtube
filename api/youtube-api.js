@@ -18,7 +18,8 @@ module.exports = async (req, res) => {
       throw new Error("API key quota exceeded or invalid. Please check your YouTube API key.");
     }
 
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", "https://jdingus.github.io");
+    res.setHeader("Access-Control-Allow-Methods", "GET");
     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.status(200).json(data);
   } catch (error) {
