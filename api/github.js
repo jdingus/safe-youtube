@@ -4,7 +4,7 @@ module.exports = async (req, res) => {
     const { method, body } = req;
 
     if (method === 'GET') {
-        const response = await fetch('https://api.github.com/gists/GIST_ID', {
+        const response = await fetch('https://api.github.com/gists/61baa6fb1e79b3b7cf343a9474aadbc1', {
             headers: {
                 'Authorization': `token ${process.env.GITHUB_TOKEN}`
             }
