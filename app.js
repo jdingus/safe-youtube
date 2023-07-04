@@ -32,12 +32,14 @@ document.getElementById("remove-channel").addEventListener("click", function () 
 });
 
 document.getElementById("channel-form").addEventListener("submit", function (event) {
+    event.preventDefault();
     const channelSelect = document.getElementById("channel-input");
+    const selectedChannel = channelSelect.value;
     if (localStorage.getItem('channels')) {
         channelSelect.innerHTML = localStorage.getItem('channels');
     }
-    event.preventDefault();
-    const channelId = document.getElementById("channel-input").value;
+    channelSelect.value = selectedChannel;
+    const channelId = selectedChannel;
     const searchQuery = document.getElementById("search-input").value;
     const maxResults = document.getElementById("max-results").value;
     if (channelId.trim() !== "") {
