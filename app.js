@@ -1,5 +1,41 @@
 
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && event.key === 'e') {
+        const adminForm = document.getElementById('admin-form');
+        adminForm.classList.toggle('d-none');
+    }
+});
+
+document.getElementById("add-channel").addEventListener("click", function () {
+    const channelName = document.getElementById("admin-channel-name").value;
+    const channelId = document.getElementById("admin-channel-id").value;
+    if (channelName.trim() !== "" && channelId.trim() !== "") {
+        const channelSelect = document.getElementById("channel-input");
+        const option = document.createElement("option");
+        option.text = channelName;
+        option.value = channelId;
+        channelSelect.add(option);
+        localStorage.setItem('channels', channelSelect.innerHTML);
+    }
+});
+
+document.getElementById("remove-channel").addEventListener("click", function () {
+    const channelName = document.getElementById("admin-channel-name").value;
+    const channelSelect = document.getElementById("channel-input");
+    for (let i = 0; i < channelSelect.length; i++) {
+        if (channelSelect.options[i].text === channelName) {
+            channelSelect.remove(i);
+            localStorage.setItem('channels', channelSelect.innerHTML);
+            break;
+        }
+    }
+});
+
 document.getElementById("channel-form").addEventListener("submit", function (event) {
+    const channelSelect = document.getElementById("channel-input");
+    if (localStorage.getItem('channels')) {
+        channelSelect.innerHTML = localStorage.getItem('channels');
+    }
     event.preventDefault();
     const channelId = document.getElementById("channel-input").value;
     const searchQuery = document.getElementById("search-input").value;
