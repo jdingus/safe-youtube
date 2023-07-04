@@ -4,6 +4,7 @@ async function fetchModule() {
 
 module.exports = async (req, res) => {
   const { channelId, searchQuery, maxResults } = req.query;
+  console.log(process.env.YOUTUBE_API_KEY); // Add this line
   const apiKey = process.env.YOUTUBE_API_KEY;
 
   const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`;
