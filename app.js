@@ -60,13 +60,13 @@ function getChannelVideos(channelId, searchQuery, maxResults) {
             }
             return response.json();
         })
-        .then(data => {
-            if (data.pageInfo.totalResults === 0) {
-                showError("No videos found for the provided channel ID and search criteria.");
-            } else {
-                displayVideos(data.items);
-            }
-        })
+    .then(data => {
+        if (data.pageInfo && data.pageInfo.totalResults === 0) {
+            showError("No videos found for the provided channel ID and search criteria.");
+        } else {
+            displayVideos(data.items);
+        }
+    })
         .catch(error => showError(error.message));
 }
 
