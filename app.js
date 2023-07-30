@@ -91,5 +91,8 @@ function updateDebugInfo(info) {
     const debugInfoElement = document.getElementById("debug-info");
     const existingInfo = JSON.parse(debugInfoElement.textContent || "{}");
     const updatedInfo = { ...existingInfo, ...info };
+    if (info.url) {
+        updatedInfo.curlCommand = `curl "${window.location.origin}${info.url}"`;
+    }
     debugInfoElement.textContent = JSON.stringify(updatedInfo, null, 2);
 }
