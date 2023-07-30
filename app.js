@@ -28,7 +28,11 @@ function getChannelVideos(channelId, searchQuery, maxResults) {
             // Update debug info
             updateDebugInfo({ channelId, searchQuery, maxResults, url, responseStatus: response.status });
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                let errorMsg = `HTTP error! status: ${response.status}`;
+                if (response.status === 404) {
+                    errorMsg = "The provided YouTube channel ID could not be found. Please check and try again.";
+                }
+                throw new Error(errorMsg);
             }
             return response.json();
         })
