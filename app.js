@@ -25,6 +25,8 @@ function getChannelVideos(channelId, searchQuery, maxResults) {
 
     fetch(url)
         .then(response => {
+            // Log the raw response text
+            response.text().then(text => console.log(text));
             // Update debug info
             updateDebugInfo({ channelId, searchQuery, maxResults, url, responseStatus: response.status });
             if (response.status === 403) {
