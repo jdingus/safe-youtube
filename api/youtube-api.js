@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
 
   try {
     const response = await axios.get(url);
-    res.status(200).json(response.data);
+    res.status(200).json({ ...response.data, debug: { url, channelId, searchQuery, maxResults, apiKey } });
   } catch (error) {
     res.status(error.response.status).json({ message: error.message });
   }

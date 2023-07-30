@@ -89,5 +89,7 @@ function showError(errorMessage) {
 
 function updateDebugInfo(info) {
     const debugInfoElement = document.getElementById("debug-info");
-    debugInfoElement.textContent = JSON.stringify(info, null, 2);
+    const existingInfo = JSON.parse(debugInfoElement.textContent || "{}");
+    const updatedInfo = { ...existingInfo, ...info };
+    debugInfoElement.textContent = JSON.stringify(updatedInfo, null, 2);
 }
