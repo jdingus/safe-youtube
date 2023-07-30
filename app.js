@@ -27,8 +27,8 @@ function getChannelVideos(channelId, searchQuery, maxResults) {
         .then(response => {
             // Update debug info
             updateDebugInfo({ channelId, searchQuery, maxResults, url, responseStatus: response.status });
-            if (response.status === 403) {
-                throw new Error("API key quota exceeded or invalid. Please check your YouTube API key.");
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
             return response.json();
         })
