@@ -10,6 +10,8 @@ module.exports = async (req, res) => {
   const apiKey = process.env.YOUTUBE_API_KEY;
   const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ''}`;
 
+  console.log(`Requesting URL: ${url}`);
+
   try {
     const response = await axios.get(url);
     res.status(200).json(response.data);
