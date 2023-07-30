@@ -1,8 +1,25 @@
 {
-    "functions": {
-      "api/youtube-api.js": {
-        "runtime": "nodejs16.x"
-      }
+  "builds": [
+    {
+      "src": "api/youtube-api.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/github.js",
+      "use": "@vercel/node"
     }
+  ],
+  "routes": [
+    {
+      "src": "/api/youtube-api",
+      "dest": "/api/youtube-api.js"
+    },
+    {
+      "src": "/api/github",
+      "dest": "/api/github.js"
+    }
+  ],
+  "env": {
+    "YOUTUBE_API_KEY": ""
   }
-  
+}
