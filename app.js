@@ -25,19 +25,27 @@ function getChannelVideos(channelId, searchQuery, maxResults) {
 
     fetch(url)
         .then(response => {
+            // Update debug info
+            updateDebugInfo({ channelId, searchQuery, maxResults, url, responseStatus: response.status });
             if (response.status === 403) {
                 throw new Error("API key quota exceeded or invalid. Please check your YouTube API key.");
             }
             return response.json();
         })
         .then(data => {
+            // Update debug info
+            updateDebugInfo({ data });
             if (data.pageInfo.totalResults === 0) {
                 showError("No videos found for the provided channel ID and search criteria.");
             } else {
                 displayVideos(data.items);
             }
         })
-        .catch(error => showError(error.message));
+        .catch(error => {
+            // Update debug info
+            updateDebugInfo({ error: error.message });
+            showError(error.message);
+        });
 }
 
 
@@ -73,4 +81,9 @@ function displayVideos(videos) {
 function showError(errorMessage) {
     const videoContainer = document.getElementById("video-container");
     videoContainer.innerHTML = `<p class="error-message">${errorMessage}</p>`;
+}
+
+function updateDebugInfo(info) {
+    const debugInfoElement = document.getElementById("debug-info");
+    debugInfoElement.textContent = JSON.stringify(info, null, 2);
 }
