@@ -92,7 +92,8 @@ function updateDebugInfo(info) {
     const existingInfo = JSON.parse(debugInfoElement.textContent || "{}");
     const updatedInfo = { ...existingInfo, ...info };
     if (info.url) {
-        updatedInfo.curlCommand = `curl "${window.location.origin}${info.url}"`;
+        const youtubeApiUrl = `https://www.googleapis.com/youtube/v3/search?key=${info.apiKey}&channelId=${info.channelId}&part=snippet,id&order=date&maxResults=${info.maxResults}${info.searchQuery ? `&q=${encodeURIComponent(info.searchQuery)}` : ''}`;
+        updatedInfo.curlCommand = `curl "${youtubeApiUrl}"`;
     }
     debugInfoElement.textContent = JSON.stringify(updatedInfo, null, 2);
 }
